@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8ehrggcfkrw0"]
+[gd_scene load_steps=9 format=3 uid="uid://c8ehrggcfkrw0"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_bdgjm"]
 [ext_resource type="Texture2D" uid="uid://b08vga25qsdfd" path="res://assets/tiles/temp-tilemap.png" id="1_xicd7"]
 [ext_resource type="PackedScene" uid="uid://djgv1xsbd7f0c" path="res://scenes/hero.tscn" id="2_f7id6"]
+[ext_resource type="PackedScene" uid="uid://ch8hr438gn753" path="res://scenes/monster.tscn" id="4_85h1j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_krel3"]
 texture = ExtResource("1_xicd7")
@@ -47,13 +48,14 @@ curve = SubResource("Curve2D_3yxco")
 [node name="PathFollow2D" type="PathFollow2D" parent="MiningPath"]
 position = Vector2(96, 544)
 rotation = -1.5708
+rotates = false
 
 [node name="Hero" parent="MiningPath/PathFollow2D" instance=ExtResource("2_f7id6")]
-speed = 100
 
 [node name="PathFollow2D2" type="PathFollow2D" parent="MiningPath"]
 position = Vector2(96, 544)
 rotation = -1.5708
+rotates = false
 
 [node name="Hero2" parent="MiningPath/PathFollow2D2" instance=ExtResource("2_f7id6")]
 speed = 50
@@ -61,6 +63,7 @@ speed = 50
 [node name="PathFollow2D3" type="PathFollow2D" parent="MiningPath"]
 position = Vector2(96, 544)
 rotation = -1.5708
+rotates = false
 
 [node name="Hero3" parent="MiningPath/PathFollow2D3" instance=ExtResource("2_f7id6")]
 speed = 150
@@ -70,10 +73,11 @@ curve = SubResource("Curve2D_p6dhj")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="FightingPath"]
 position = Vector2(96, 544)
+rotates = false
 
 [node name="Hero" parent="FightingPath/PathFollow2D" instance=ExtResource("2_f7id6")]
+collision_mask = 6
 status = 3
-speed = 500
 
 [node name="MagicStonesLabel" type="Label" parent="."]
 offset_right = 40.0
@@ -88,3 +92,8 @@ offset_right = 1064.0
 offset_bottom = 46.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "100"
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Monster" parent="Enemies" instance=ExtResource("4_85h1j")]
+position = Vector2(480, 224)
