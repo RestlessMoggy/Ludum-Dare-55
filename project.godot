@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Isekai Gacha"
-run/main_scene="res://scenes/level.tscn"
+config/name="Goblin Hunt"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
