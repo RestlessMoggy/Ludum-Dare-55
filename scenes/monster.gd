@@ -7,6 +7,8 @@ const PROJECTILE_SPEED = 1500
 var fighter_list = []
 var miner_list = []
 
+var is_shooting
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -36,9 +38,18 @@ func _on_attack_area_body_exited(body):
 func _on_attack_timer_timeout():
 	var hero = find_target()
 	if hero != null:
+		is_shooting = true
+		$AnimatedSprite2D.play("shooting")
 		var projectile = projectile_scene.instantiate()
 		var projectile_direction = (hero.global_position - global_position).normalized()
+		
+		if projectile_direction.x < 0:
+			$AnimatedSprite2D.flip_h = true
+		else:
+			$AnimatedSprite2D.flip_h = false
+			
 		projectile.direction = projectile_direction
+		projectile.look_at(projectile_direction)
 		$Projectiles.add_child(projectile)
 
 
@@ -79,3 +90,9 @@ func find_target():
 func remove_hero_from_queue(hero):
 	miner_list.erase(hero)
 	fighter_list.erase(hero)
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if is_shooting:
+		$AnimatedSprite2D.play("default")
+		is_shooting = false

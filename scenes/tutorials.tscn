@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://c75ltxk3gnn2d"]
+
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_m1ppp"]
+[ext_resource type="Texture2D" uid="uid://djknvbf3kmdlb" path="res://assets/tutorial/slide1.png" id="2_x4x0p"]
+[ext_resource type="Texture2D" uid="uid://t42p3dumx2k8" path="res://assets/tutorial/slide2.png" id="3_wi32g"]
+[ext_resource type="Texture2D" uid="uid://cdhek4xj472dx" path="res://assets/tutorial/slide3.png" id="4_4x23t"]
+[ext_resource type="Texture2D" uid="uid://bqc4k1l3psv7p" path="res://assets/tutorial/slide4.png" id="5_1rv6h"]
+[ext_resource type="Texture2D" uid="uid://fm4k56kog0j3" path="res://assets/tutorial/slide5.png" id="6_xc8ut"]
+
+[node name="Tutorials" type="Node2D"]
+position = Vector2(960, 540)
+script = ExtResource("1_m1ppp")
+
+[node name="Slides" type="Node2D" parent="."]
+
+[node name="Slide1" type="Sprite2D" parent="Slides"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_x4x0p")
+
+[node name="Slide2" type="Sprite2D" parent="Slides"]
+position = Vector2(1920, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wi32g")
+
+[node name="Slide3" type="Sprite2D" parent="Slides"]
+position = Vector2(3840, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_4x23t")
+
+[node name="Slide4" type="Sprite2D" parent="Slides"]
+position = Vector2(5760, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("5_1rv6h")
+
+[node name="Slide5" type="Sprite2D" parent="Slides"]
+position = Vector2(7680, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("6_xc8ut")
+
+[node name="NextButton" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 150)
+offset_left = 621.0
+offset_top = 349.0
+offset_right = 921.0
+offset_bottom = 499.0
+theme_override_font_sizes/font_size = 72
+text = "Next
+"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = -935.0
+offset_top = -521.0
+offset_right = -853.0
+offset_bottom = -468.0
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

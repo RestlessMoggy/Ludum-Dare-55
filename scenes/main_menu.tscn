@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbi8lqb877jtf"]
+
+[ext_resource type="Texture2D" uid="uid://vbaljvvv1178" path="res://assets/pattern_yellow.png" id="1_8a078"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_qphbs"]
+[ext_resource type="Theme" uid="uid://c8g3kaft63m8d" path="res://data/ui_theme.tres" id="2_sksxk"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_qphbs")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 3728.0
+offset_bottom = 2977.0
+texture = ExtResource("1_8a078")
+stretch_mode = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -506.0
+offset_top = -411.0
+offset_right = 507.0
+offset_bottom = 411.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_sksxk")
+theme_override_font_sizes/font_size = 64
+text = "
+Goblin Hunt
+
+Summon Heroes to 
+Beat The Goblin King
+
+
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 480.0
+offset_top = 770.0
+offset_right = -1140.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Play"
+
+[node name="TutorialButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 810.0
+offset_top = 770.0
+offset_right = 1110.0
+offset_bottom = 895.0
+theme_override_font_sizes/font_size = 36
+text = "Tutorial"
+
+[node name="QuitButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1140.0
+offset_top = 770.0
+offset_right = -480.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="pressed" from="Control/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="Control/QuitButton" to="." method="_on_quit_button_pressed"]

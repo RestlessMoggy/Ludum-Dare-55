@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://by2sguhqjbkn1"]
+
+[ext_resource type="Theme" uid="uid://c8g3kaft63m8d" path="res://data/ui_theme.tres" id="1_u0gqj"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_y2ewd"]
+[ext_resource type="Texture2D" uid="uid://dq6ut7jrha8t4" path="res://assets/pattern_blue.png" id="3_1kyt5"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_y2ewd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 3728.0
+offset_bottom = 2977.0
+texture = ExtResource("3_1kyt5")
+stretch_mode = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -506.0
+offset_top = -411.0
+offset_right = 507.0
+offset_bottom = 411.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_u0gqj")
+theme_override_font_sizes/font_size = 64
+text = "
+Game Over
+
+You Do Not Have 
+Enough Resources to Summon 
+Another Hero...
+
+
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 600.0
+offset_top = 770.0
+offset_right = -1020.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.16, 1)
+theme_override_font_sizes/font_size = 36
+text = "Quit"
+
+[node name="RestartButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1020.0
+offset_top = 770.0
+offset_right = 1320.0
+offset_bottom = 895.0
+theme_override_font_sizes/font_size = 36
+text = "Restart"
+
+[connection signal="pressed" from="Control/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Control/RestartButton" to="." method="_on_restart_button_pressed"]
